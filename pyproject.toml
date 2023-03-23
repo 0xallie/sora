@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "sora"
+version = "0.1.0"
+description = "Multi-purpose Discord bot"
+authors = ["alexia <me@alexia.lol>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+chatgpt = {git = "https://github.com/0xallie/chatgpt.git"}
+discord-py = "^2.2.2"
+platformdirs = "^3.1.1"
+ruamel-yaml = "^0.17.21"
+
+[tool.poetry.scripts]
+sora = "sora.sora:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
