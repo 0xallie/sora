@@ -112,11 +112,12 @@ class Logger(commands.Cog):
             name="Channel",
             value=message.channel.mention,
         )
-        embed.add_field(
-            name="Message",
-            value=textwrap.shorten(message.content, width=1024, placeholder="..."),
-            inline=False,
-        )
+        if message.content:
+            embed.add_field(
+                name="Message",
+                value=textwrap.shorten(message.content, width=1024, placeholder="..."),
+                inline=False,
+            )
         embed.add_field(
             name="",
             value=f"[Link to message](https://discord.com/channels/{message.guild.id}/{message.channel.id}/{message.id})",
