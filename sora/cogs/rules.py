@@ -38,7 +38,7 @@ class Rules(Cog):
                     title="Rule 3",
                     description=(
                         "Keep NSFW content to a minimum. "
-                        "Only mild NSFW is allowed and it must be spoilered."
+                        "Only mild NSFW is allowed, and any NSFW media must be spoilered."
                     ),
                 ),
                 discord.Embed(
