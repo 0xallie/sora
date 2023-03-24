@@ -44,6 +44,11 @@ class Rules(Cog):
                 discord.Embed(
                     color=discord.Color.fuchsia(),
                     title="Rule 4",
+                    description=f"Avoid excessive spam outside <#{self.config['channels']['bot_commands']}> or the appropriate channels.",
+                ),
+                discord.Embed(
+                    color=discord.Color.fuchsia(),
+                    title="Rule 5",
                     description="If you post potentially sensitive/triggering content, please spoiler it.",
                 ),
             ]
