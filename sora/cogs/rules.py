@@ -23,31 +23,28 @@ class Rules(Cog):
                 discord.Embed(
                     color=discord.Color.fuchsia(),
                     title="Rule 1",
-                    description="\n".join([
-                        "Be nice. Swearing is allowed, but try not to insult people.",
-                        "A little banter is fine, but if someone is uncomfortable with it, please stop.",
-                    ]),
+                    description=(
+                        "Be nice. Swearing is allowed, but try not to insult people. "
+                        "A little banter is fine, but if someone is uncomfortable with it, please stop."
+                    ),
                 ),
                 discord.Embed(
                     color=discord.Color.fuchsia(),
                     title="Rule 2",
-                    description="\n".join([
-                        "No racism, sexism, homophobia, transphobia, ableism or other bigotry.",
-                    ]),
+                    description="No racism, sexism, homophobia, transphobia, ableism or other bigotry.",
                 ),
                 discord.Embed(
                     color=discord.Color.fuchsia(),
                     title="Rule 3",
-                    description="\n".join([
-                        "Keep NSFW content to a minimum. Only mild NSFW is allowed and it must be spoilered.",
-                    ]),
+                    description=(
+                        "Keep NSFW content to a minimum. "
+                        "Only mild NSFW is allowed and it must be spoilered."
+                    ),
                 ),
                 discord.Embed(
                     color=discord.Color.fuchsia(),
                     title="Rule 4",
-                    description="\n".join([
-                        "If you post potentially sensitive/triggering content, please spoiler it.",
-                    ]),
+                    description="If you post potentially sensitive/triggering content, please spoiler it.",
                 ),
             ]
         )
