@@ -9,11 +9,12 @@ from chatgpt import APIError, ChatGPTClient
 from discord import app_commands
 from discord.ext import commands
 
+from ..utils import Cog
 
-class ChatGPT(commands.GroupCog, group_name="chatgpt", description="ChatGPT-related commands"):
-    def __init__(self, bot: commands.Bot, config: dict):
-        self.bot = bot
-        self.config = config
+
+class ChatGPT(Cog, commands.GroupCog, group_name="chatgpt", description="ChatGPT-related commands"):
+    def __init__(self, *args: Any, **kwargs: Any):
+        super().__init__(*args, **kwargs)
 
         self.context = {}
 

@@ -2,11 +2,10 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
+from ..utils import Cog
 
-class Roles(commands.Cog):
-    def __init__(self, config: dict):
-        self.config = config
 
+class Roles(Cog):
     @commands.Cog.listener()
     async def on_interaction(self, interaction: discord.Interaction) -> None:
         if "custom_id" not in interaction.data:

@@ -1,11 +1,10 @@
 import discord
 from discord.ext import commands
 
+from ..utils import Cog
 
-class Sync(commands.Cog):
-    def __init__(self, config: dict):
-        self.config = config
 
+class Sync(Cog):
     @commands.command(name="sync", description="Sync slash commands")
     async def sync(self, ctx: commands.Context) -> None:
         if ctx.author.id != self.config["owner_id"]:

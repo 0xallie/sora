@@ -5,13 +5,10 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from ..utils import pluralize
+from ..utils import Cog, pluralize
 
 
-class Moderation(commands.Cog):
-    def __init__(self, config: dict):
-        self.config = config
-
+class Moderation(Cog):
     @app_commands.command(description="Purge the specified amount of messages from the channel")
     async def purge(self, interaction: discord.Interaction, count: int) -> None:
         if not interaction.channel.permissions_for(interaction.user).manage_messages:

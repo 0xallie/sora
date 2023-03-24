@@ -6,13 +6,10 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from ..utils import pluralize
+from ..utils import Cog, pluralize
 
 
-class Logger(commands.Cog):
-    def __init__(self, config: dict):
-        self.config = config
-
+class Logger(Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member) -> None:
         log_channel = member.guild.get_channel(self.config["channels"]["private_logs"])

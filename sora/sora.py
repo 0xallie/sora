@@ -22,11 +22,11 @@ def main() -> None:
     bot = commands.Bot(command_prefix=config["prefix"], intents=intents)
 
     asyncio.run(bot.add_cog(ChatGPT(bot, config)))
-    asyncio.run(bot.add_cog(Embed(config)))
-    asyncio.run(bot.add_cog(Logger(config)))
-    asyncio.run(bot.add_cog(Moderation(config)))
-    asyncio.run(bot.add_cog(Ping(config)))
-    asyncio.run(bot.add_cog(Roles(config)))
-    asyncio.run(bot.add_cog(Sync(config)))
+    asyncio.run(bot.add_cog(Embed(bot, config)))
+    asyncio.run(bot.add_cog(Logger(bot, config)))
+    asyncio.run(bot.add_cog(Moderation(bot, config)))
+    asyncio.run(bot.add_cog(Ping(bot, config)))
+    asyncio.run(bot.add_cog(Roles(bot, config)))
+    asyncio.run(bot.add_cog(Sync(bot, config)))
 
     bot.run(config["token"], log_level=logging.DEBUG)
