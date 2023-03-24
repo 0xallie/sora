@@ -8,7 +8,7 @@ from discord.ext import commands
 from platformdirs import PlatformDirs
 from ruamel.yaml import YAML
 
-from .cogs import ChatGPT, Embed, Logger, Moderation, Ping, Roles, Sync
+from .cogs import ChatGPT, Embed, Logger, Moderation, Ping, Roles, Rules, Sync
 
 
 def main() -> None:
@@ -27,6 +27,7 @@ def main() -> None:
     asyncio.run(bot.add_cog(Moderation(bot, config)))
     asyncio.run(bot.add_cog(Ping(bot, config)))
     asyncio.run(bot.add_cog(Roles(bot, config)))
+    asyncio.run(bot.add_cog(Rules(bot, config)))
     asyncio.run(bot.add_cog(Sync(bot, config)))
 
     bot.run(config["token"], log_level=logging.DEBUG)
