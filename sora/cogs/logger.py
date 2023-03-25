@@ -127,7 +127,7 @@ class Logger(Cog):
     async def on_message_edit(self, before: discord.Message, after: discord.Message) -> None:
         log_channel = before.guild.get_channel(self.config["channels"]["private_logs"])
 
-        if before.channel == log_channel or before.content == after.content:
+        if before.channel == log_channel or before.author.bot or before.content == after.content:
             return
 
         embed = discord.Embed(
