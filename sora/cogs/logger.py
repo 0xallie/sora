@@ -161,7 +161,7 @@ class Logger(Cog):
 
     @commands.Cog.listener()
     async def on_user_update(self, before: discord.User, after: discord.User) -> None:
-        log_channel = before.guild.get_channel(self.config["channels"]["private_logs"])
+        log_channel = self.bot.get_channel(self.config["channels"]["private_logs"])
 
         embed = discord.Embed(
             color=discord.Color.orange(),
