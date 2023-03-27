@@ -1,9 +1,7 @@
 import asyncio
 import logging
-from pathlib import Path
 
 import discord
-from discord import app_commands
 from discord.ext import commands
 from platformdirs import PlatformDirs
 from ruamel.yaml import YAML

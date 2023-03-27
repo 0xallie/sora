@@ -26,4 +26,3 @@ class Sync(Cog):
                 description="Synced slash commands.",
             )
         )
-

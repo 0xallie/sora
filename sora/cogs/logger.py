@@ -1,9 +1,6 @@
 import textwrap
-from datetime import datetime
-from typing import Optional
 
 import discord
-from discord import app_commands
 from discord.ext import commands
 
 from ..utils import Cog, pluralize
@@ -51,7 +48,7 @@ class Logger(Cog):
             if entry.target.id == member.id:
                 embed.add_field(
                     name="Banned by",
-                    value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",
+                    value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",  # noqa: E501
                     inline=False,
                 )
                 got_audit_log_entry = True
@@ -61,7 +58,7 @@ class Logger(Cog):
                 if entry.target.id == member.id:
                     embed.add_field(
                         name="Kicked by",
-                        value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",
+                        value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",  # noqa: E501
                         inline=False,
                     )
                     got_audit_log_entry = True
@@ -112,7 +109,7 @@ class Logger(Cog):
             if entry.target.id == before.id:
                 embed.add_field(
                     name="Updated by",
-                    value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",
+                    value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",  # noqa: E501
                     inline=False,
                 )
             break
@@ -133,7 +130,7 @@ class Logger(Cog):
         )
         embed.add_field(
             name="User",
-            value=f"{discord.utils.escape_markdown(message.author.name)}#{message.author.discriminator} ({message.author.mention})",
+            value=f"{discord.utils.escape_markdown(message.author.name)}#{message.author.discriminator} ({message.author.mention})",  # noqa: E501
         )
         embed.add_field(
             name="Channel",
@@ -150,14 +147,14 @@ class Logger(Cog):
             if entry.target.id == message.id and entry.created_at >= message.created_at:
                 embed.add_field(
                     name="Deleted by",
-                    value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",
+                    value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",  # noqa: E501
                     inline=False,
                 )
             break
 
         embed.add_field(
             name="",
-            value=f"[Link to message](https://discord.com/channels/{message.guild.id}/{message.channel.id}/{message.id})",
+            value=f"[Link to message](https://discord.com/channels/{message.guild.id}/{message.channel.id}/{message.id})",  # noqa: E501
             inline=False,
         )
 
@@ -176,7 +173,7 @@ class Logger(Cog):
         )
         embed.add_field(
             name="User",
-            value=f"{discord.utils.escape_markdown(before.author.name)}#{before.author.discriminator} ({before.author.mention})",
+            value=f"{discord.utils.escape_markdown(before.author.name)}#{before.author.discriminator} ({before.author.mention})",  # noqa: E501
         )
         embed.add_field(
             name="Channel",

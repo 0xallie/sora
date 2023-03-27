@@ -1,6 +1,5 @@
 import discord
 from discord import app_commands
-from discord.ext import commands
 
 from ..utils import Cog
 
@@ -44,7 +43,10 @@ class Rules(Cog):
                 discord.Embed(
                     color=discord.Color.fuchsia(),
                     title="Rule 4",
-                    description=f"Avoid excessive spam outside <#{self.config['channels']['bot_commands']}> or the appropriate channels.",
+                    description=(
+                        f"Avoid excessive spam outside <#{self.config['channels']['bot_commands']}> "
+                        f"or the appropriate channels."
+                    ),
                 ),
                 discord.Embed(
                     color=discord.Color.fuchsia(),

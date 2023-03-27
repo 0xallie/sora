@@ -1,9 +1,5 @@
-from datetime import datetime
-from typing import Optional
-
 import discord
 from discord import app_commands
-from discord.ext import commands
 
 from ..utils import Cog, pluralize
 
@@ -32,4 +28,3 @@ class Moderation(Cog):
                 description=f"Purged {len(purged)} {pluralize(len(purged), 'message')}.",
             ),
         )
-

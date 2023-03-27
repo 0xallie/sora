@@ -1,9 +1,7 @@
 from datetime import datetime
-from typing import Optional
 
 import discord
 from discord import app_commands
-from discord.ext import commands
 
 from ..utils import Cog
 
@@ -11,7 +9,7 @@ from ..utils import Cog
 class Ping(Cog):
     @app_commands.command(description="Check the bot's latency")
     async def ping(self, interaction: discord.Interaction) -> None:
-        embed=discord.Embed(
+        embed = discord.Embed(
             color=discord.Color.green(),
             title="Pong!",
         )
@@ -25,7 +23,7 @@ class Ping(Cog):
         )
 
         start = datetime.utcnow()
- 
+
         await interaction.response.send_message(
             embed=embed,
             ephemeral=interaction.channel.id != self.config["channels"]["bot_commands"],

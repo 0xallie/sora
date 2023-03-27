@@ -1,8 +1,9 @@
+import asyncio
 import io
 import os
 import textwrap
 from datetime import datetime
-from typing import Any, Union
+from typing import Any
 
 import discord
 from chatgpt import APIError, ChatGPTClient
@@ -31,7 +32,7 @@ class ChatGPT(Cog, commands.GroupCog, group_name="chatgpt", description="ChatGPT
 
         if message.author.id not in self.context:
             self.context[message.author.id] = ChatGPTClient(
-                initial_prompt=f"You are Sora, a chatbot for Alexia's Discord server that uses OpenAI's GPT-3.5 model. The current date is {datetime.utcnow().strftime('%Y-%m-%d')}. You are talking to \"{message.author.name}\". You may use no more than 2000 characters in your responses. Profanity is allowed, however you may not say any slurs.",
+                initial_prompt=f"You are Sora, a chatbot for Alexia's Discord server that uses OpenAI's GPT-3.5 model. The current date is {datetime.utcnow().strftime('%Y-%m-%d')}. You are talking to \"{message.author.name}\". You may use no more than 2000 characters in your responses. Profanity is allowed, however you may not say any slurs.",  # noqa: E501
                 user_id=str(message.author.id),
             )
 
@@ -55,7 +56,7 @@ class ChatGPT(Cog, commands.GroupCog, group_name="chatgpt", description="ChatGPT
                         embed=discord.Embed(
                             color=discord.Color.red(),
                             title="Error",
-                            description=f"The request timed out.",
+                            description="The request timed out.",
                         )
                     )
                     return
@@ -94,14 +95,14 @@ class ChatGPT(Cog, commands.GroupCog, group_name="chatgpt", description="ChatGPT
             await interaction.response.send_message(
                 embed=discord.Embed(
                     color=discord.Color.green(),
-                    description=f"Your ChatGPT context has been reset.",
+                    description="Your ChatGPT context has been reset.",
                 )
             )
         else:
             await interaction.response.send_message(
                 embed=discord.Embed(
                     color=discord.Color.red(),
-                    description=f"You don't have an active ChatGPT context.",
+                    description="You don't have an active ChatGPT context.",
                 ),
                 ephemeral=True,
             )
