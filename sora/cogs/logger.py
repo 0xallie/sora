@@ -64,12 +64,12 @@ class Logger(Cog):
         if before.nick != after.nick:
             embed.add_field(
                 name="Old nickname",
-                value=discord.utils.escape_markdown(before.nick),
+                value=discord.utils.escape_markdown(before.nick or before.name),
                 inline=False,
             )
             embed.add_field(
                 name="New nickname",
-                value=discord.utils.escape_markdown(after.nick),
+                value=discord.utils.escape_markdown(after.nick or after.name),
                 inline=True,
             )
 
