@@ -51,6 +51,12 @@ class Rules(Cog):
                     title="Rule 5",
                     description="If you post potentially sensitive/triggering content, please spoiler it.",
                 ),
+                discord.Embed(
+                    color=discord.Color.fuchsia(),
+                    title="Rule 6",
+                    description="Please don't invite anyone without my permission.",
+                ),
+
             ]
         )
 
