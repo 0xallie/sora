@@ -46,6 +46,27 @@ class Logger(Cog):
             value=f"<t:{int(member.joined_at.timestamp())}:R>",
         )
 
+        got_audit_log_entry = False
+        async for entry in member.guild.audit_logs(action=discord.AuditLogAction.ban, limit=1):
+            if entry.target.id == member.id:
+                embed.add_field(
+                    name="Banned by",
+                    value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",
+                    inline=False,
+                )
+                got_audit_log_entry = True
+            break
+        if not got_audit_log_entry:
+            async for entry in member.guild.audit_logs(action=discord.AuditLogAction.kick, limit=1):
+                if entry.target.id == member.id:
+                    embed.add_field(
+                        name="Kicked by",
+                        value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",
+                        inline=False,
+                    )
+                    got_audit_log_entry = True
+                break
+
         await log_channel.send(embed=embed)
 
     @commands.Cog.listener()
@@ -87,6 +108,15 @@ class Logger(Cog):
                 inline=bool(added_roles),
             )
 
+        async for entry in before.guild.audit_logs(action=discord.AuditLogAction.member_update, limit=1):
+            if entry.target.id == before.id:
+                embed.add_field(
+                    name="Updated by",
+                    value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",
+                    inline=False,
+                )
+            break
+
         if len(embed.fields) > 1:
             await log_channel.send(embed=embed)
 
@@ -115,6 +145,16 @@ class Logger(Cog):
                 value=textwrap.shorten(message.content, width=1024, placeholder="..."),
                 inline=False,
             )
+
+        async for entry in message.guild.audit_logs(action=discord.AuditLogAction.message_delete, limit=1):
+            if entry.target.id == message.id and entry.created_at >= message.created_at:
+                embed.add_field(
+                    name="Deleted by",
+                    value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",
+                    inline=False,
+                )
+            break
+
         embed.add_field(
             name="",
             value=f"[Link to message](https://discord.com/channels/{message.guild.id}/{message.channel.id}/{message.id})",
