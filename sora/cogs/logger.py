@@ -77,13 +77,14 @@ class Logger(Cog):
         embed.add_field(
             name="User",
             value=f"{discord.utils.escape_markdown(before.name)}#{before.discriminator} ({before.mention})",
+            inline=False,
         )
 
         if before.nick != after.nick:
             embed.add_field(
                 name="Old nickname",
                 value=discord.utils.escape_markdown(before.nick or before.name),
-                inline=False,
+                inline=True,
             )
             embed.add_field(
                 name="New nickname",
@@ -96,13 +97,13 @@ class Logger(Cog):
             embed.add_field(
                 name=f"{pluralize(len(added_roles), 'Role')} added",
                 value=" ".join(x.mention for x in sorted(added_roles)),
-                inline=False,
+                inline=True,
             )
         if removed_roles := all_roles - set(after.roles):
             embed.add_field(
                 name=f"{pluralize(len(removed_roles), 'Role')} removed",
                 value=" ".join(x.mention for x in sorted(removed_roles)),
-                inline=bool(added_roles),
+                inline=True,
             )
 
         if added_roles or removed_roles:
@@ -217,13 +218,14 @@ class Logger(Cog):
         embed.add_field(
             name="User",
             value="{before.mention}",
+            inline=False,
         )
 
         if before.name != after.name or before.discriminator != after.discriminator:
             embed.add_field(
                 name="Old username",
                 value=f"{discord.utils.escape_markdown(before.name)}#{before.discriminator}",
-                inline=False,
+                inline=True,
             )
             embed.add_field(
                 name="New username",
