@@ -105,14 +105,24 @@ class Logger(Cog):
                 inline=bool(added_roles),
             )
 
-        async for entry in before.guild.audit_logs(action=discord.AuditLogAction.member_update, limit=1):
-            if entry.target.id == before.id:
-                embed.add_field(
-                    name="Updated by",
-                    value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",  # noqa: E501
-                    inline=False,
-                )
-            break
+        if added_roles or removed_roles:
+            async for entry in before.guild.audit_logs(action=discord.AuditLogAction.member_role_update, limit=1):
+                if entry.target.id == before.id:
+                    embed.add_field(
+                        name="Updated by",
+                        value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",  # noqa: E501
+                        inline=False,
+                    )
+                break
+        else:
+            async for entry in before.guild.audit_logs(action=discord.AuditLogAction.member_update, limit=1):
+                if entry.target.id == before.id:
+                    embed.add_field(
+                        name="Updated by",
+                        value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",  # noqa: E501
+                        inline=False,
+                    )
+                break
 
         if len(embed.fields) > 1:
             await log_channel.send(embed=embed)
