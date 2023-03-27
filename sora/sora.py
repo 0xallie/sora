@@ -17,7 +17,11 @@ def main() -> None:
     intents.members = True
     intents.message_content = True
 
-    bot = commands.Bot(command_prefix=config["prefix"], intents=intents)
+    bot = commands.Bot(
+        command_prefix=config["prefix"],
+        intents=intents,
+        allowed_mentions=discord.AllowedMentions(everyone=False, roles=False),
+    )
 
     asyncio.run(bot.add_cog(ChatGPT(bot, config)))
     asyncio.run(bot.add_cog(Embed(bot, config)))
