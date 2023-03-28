@@ -123,7 +123,7 @@ class Roles(Cog):
         await interaction.response.send_message(
             embed=discord.Embed(
                 color=discord.Color.green(),
-                description="Posted role buttons.",
+                description="Done.",
             ),
             ephemeral=True,
         )

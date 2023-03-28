@@ -65,7 +65,7 @@ class Rules(Cog):
         await interaction.response.send_message(
             embed=discord.Embed(
                 color=discord.Color.green(),
-                description="Posted rules.",
+                description="Done.",
             ),
             ephemeral=True,
         )
