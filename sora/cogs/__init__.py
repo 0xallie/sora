@@ -6,4 +6,5 @@ from .moderation import Moderation
 from .ping import Ping
 from .roles import Roles
 from .rules import Rules
+from .say import Say
 from .sync import Sync
