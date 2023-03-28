@@ -92,10 +92,7 @@ class Roles(Cog):
             embed=discord.Embed(
                 color=discord.Color.fuchsia(),
                 title="Pronouns",
-                description="\n\n".join([
-                    f"Choose your preferred pronouns using the buttons below.",  # noqa: F541
-                    #"If you would like more pronouns to be added, please contact <@{self.config['owner_id']}>.",
-                ]),
+                description="Choose your preferred pronouns.",
             ),
             view=view,
         )
@@ -113,9 +110,7 @@ class Roles(Cog):
             embed=discord.Embed(
                 color=discord.Color.fuchsia(),
                 title="Ping roles",
-                description="\n\n".join([
-                    "Choose what you would like to be pinged for.",
-                ]),
+                description="Choose what you would like to be pinged for.",
             ),
             view=view,
         )
