@@ -1,3 +1,4 @@
+from .applewiki import AppleWiki
 from .chatgpt import ChatGPT
 from .embed import Embed
 from .logger import Logger
