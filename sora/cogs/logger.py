@@ -17,7 +17,7 @@ class Logger(Cog):
         )
         embed.add_field(
             name="User",
-            value=f"{discord.utils.escpae_markdown(member.name)}#{member.discriminator} ({member.mention})",
+            value=f"{discord.utils.escape_markdown(member.name)}#{member.discriminator} ({member.mention})",
         )
         embed.add_field(
             name="Created",
