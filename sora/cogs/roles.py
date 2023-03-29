@@ -101,6 +101,14 @@ class Roles(Cog):
         view.add_item(
             discord.ui.Button(
                 row=1,
+                label="iOS Signing Status",
+                style=discord.ButtonStyle.primary,
+                custom_id="toggle_role:ping_ios_signing_status",
+            )
+        )
+        view.add_item(
+            discord.ui.Button(
+                row=1,
                 label="tree ping",
                 style=discord.ButtonStyle.primary,
                 custom_id="toggle_role:ping_tree",
