@@ -7,8 +7,9 @@ from ..utils import Cog
 
 
 class Ping(Cog):
-    @app_commands.command(description="Check the bot's latency")
+    @app_commands.command()
     async def ping(self, interaction: discord.Interaction) -> None:
+        """Check the bot's latency"""
         embed = discord.Embed(
             color=discord.Color.green(),
             title="Pong!",

@@ -5,8 +5,12 @@ from ..utils import Cog, pluralize
 
 
 class Moderation(Cog):
-    @app_commands.command(description="Purge the specified amount of messages from the channel")
+    @app_commands.command()
     async def purge(self, interaction: discord.Interaction, count: int) -> None:
+        """Purge the specified amount of messages from the channel
+
+        :param count: Maximum number of messages to purge
+        """
         if not interaction.channel.permissions_for(interaction.user).manage_messages:
             await interaction.response.send_message(
                 embed=discord.Embed(

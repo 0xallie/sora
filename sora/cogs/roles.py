@@ -35,8 +35,9 @@ class Roles(Cog):
                     ephemeral=True,
                 )
 
-    @app_commands.command(description="Post role buttons")
+    @app_commands.command()
     async def postroles(self, interaction: discord.Interaction) -> None:
+        """Post role buttons"""
         if interaction.user.id != self.config["owner_id"]:
             await interaction.response.send_message(
                 embed=discord.Embed(

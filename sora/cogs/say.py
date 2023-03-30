@@ -8,8 +8,13 @@ from ..utils import Cog
 
 
 class Say(Cog):
-    @app_commands.command(description="Make the bot say something")
+    @app_commands.command()
     async def say(self, interaction: discord.Interaction, message: str, channel: Optional[discord.TextChannel]) -> None:
+        """Make the bot say something
+
+        :param message: Message to send
+        :param channel: Channel to send to
+        """
         if interaction.user.id != self.config["owner_id"]:
             await interaction.response.send_message(
                 embed=discord.Embed(

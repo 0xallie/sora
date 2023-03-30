@@ -5,8 +5,9 @@ from ..utils import Cog
 
 
 class Sync(Cog):
-    @commands.command(name="sync", description="Sync slash commands")
+    @commands.command()
     async def sync(self, ctx: commands.Context) -> None:
+        """Sync slash commands"""
         if ctx.author.id != self.config["owner_id"]:
             await ctx.reply(
                 embed=discord.Embed(

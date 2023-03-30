@@ -5,8 +5,9 @@ from ..utils import Cog
 
 
 class Rules(Cog):
-    @app_commands.command(description="Post rules")
+    @app_commands.command()
     async def postrules(self, interaction: discord.Interaction) -> None:
+        """Post rules"""
         if interaction.user.id != self.config["owner_id"]:
             await interaction.response.send_message(
                 embed=discord.Embed(

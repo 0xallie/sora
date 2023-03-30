@@ -7,7 +7,7 @@ from ..utils import Cog
 
 
 class Embed(Cog):
-    @app_commands.command(description="Post an embed")
+    @app_commands.command()
     async def postembed(
         self,
         interaction: discord.Interaction,
@@ -15,6 +15,13 @@ class Embed(Cog):
         description: Optional[str] = None,
         color: Optional[str] = None,
     ) -> None:
+        """Post an embed
+
+        :param title: Embed title
+        :param title: Embed description
+        :param title: Embed color
+        """
+
         if interaction.user.id != self.config["owner_id"]:
             await interaction.response.send_message(
                 embed=discord.Embed(

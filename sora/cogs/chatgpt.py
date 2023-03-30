@@ -88,8 +88,9 @@ class ChatGPT(Cog, commands.GroupCog, group_name="chatgpt", description="ChatGPT
 
         await message.remove_reaction(discord.utils.get(message.guild.emojis, name="loading"), self.bot.user)
 
-    @app_commands.command(description="Reset your ChatGPT context")
+    @app_commands.command()
     async def reset(self, interaction: discord.Interaction) -> None:
+        """Reset your ChatGPT context"""
         if client := self.context.get(interaction.user.id):
             client.reset_context()
             await interaction.response.send_message(

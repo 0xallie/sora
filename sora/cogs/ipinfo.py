@@ -8,8 +8,12 @@ from ..utils import Cog
 
 
 class IPInfo(Cog):
-    @app_commands.command(description="Get information about an IP address")
+    @app_commands.command()
     async def ipinfo(self, interaction: discord.Interaction, ip: str) -> None:
+        """Get information about an IP address
+
+        :param ip: IP address
+        """
         try:
             ipaddress.ip_address(ip)
         except ValueError:
@@ -26,7 +30,7 @@ class IPInfo(Cog):
 
         embed = discord.Embed(
             color=discord.Color.fuchsia(),
-            title="IP Information",
+            title="IP Address Information",
         )
 
         async with aiohttp.ClientSession() as session:
