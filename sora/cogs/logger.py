@@ -153,8 +153,10 @@ class Logger(Cog):
             inline=False,
         )
 
-        async for entry in message.guild.audit_logs(action=discord.AuditLogAction.message_delete, limit=1):
-            if entry.target.id == message.id and entry.created_at >= message.created_at:
+        async for entry in message.guild.audit_logs(
+            action=discord.AuditLogAction.message_delete, limit=1, after=message.created_at
+        ):
+            if entry.target.id == message.id:
                 embed.add_field(
                     name="Deleted by",
                     value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",  # noqa: E501
