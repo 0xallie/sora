@@ -1,3 +1,4 @@
+import asyncio
 import discord
 from discord.ext import commands
 
@@ -25,5 +26,8 @@ class Sync(Cog):
             embed=discord.Embed(
                 color=discord.Color.green(),
                 description="Synced slash commands.",
-            )
+            ),
+            delete_after=5,
         )
+        await asyncio.sleep(5)
+        await ctx.message.delete()
