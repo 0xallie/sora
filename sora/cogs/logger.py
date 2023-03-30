@@ -132,7 +132,7 @@ class Logger(Cog):
     async def on_message_delete(self, message: discord.Message) -> None:
         log_channel = message.guild.get_channel(self.config["channels"]["private_logs"])
 
-        if message.channel == log_channel:
+        if message.channel == log_channel or not message.content:
             return
 
         embed = discord.Embed(
@@ -147,12 +147,11 @@ class Logger(Cog):
             name="Channel",
             value=message.channel.mention,
         )
-        if message.content:
-            embed.add_field(
-                name="Message",
-                value=textwrap.shorten(message.content, width=1024, placeholder="..."),
-                inline=False,
-            )
+        embed.add_field(
+            name="Message",
+            value=textwrap.shorten(message.content, width=1024, placeholder="..."),
+            inline=False,
+        )
 
         async for entry in message.guild.audit_logs(action=discord.AuditLogAction.message_delete, limit=1):
             if entry.target.id == message.id and entry.created_at >= message.created_at:
