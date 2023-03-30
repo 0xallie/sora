@@ -44,7 +44,7 @@ class Logger(Cog):
         )
 
         got_audit_log_entry = False
-        async for entry in member.guild.audit_logs(action=discord.AuditLogAction.ban, limit=1):
+        async for entry in member.guild.audit_logs(action=discord.AuditLogAction.ban, limit=1, after=member.joined_at):
             if entry.target.id == member.id:
                 embed.add_field(
                     name="Banned by",
@@ -54,7 +54,9 @@ class Logger(Cog):
                 got_audit_log_entry = True
             break
         if not got_audit_log_entry:
-            async for entry in member.guild.audit_logs(action=discord.AuditLogAction.kick, limit=1):
+            async for entry in member.guild.audit_logs(
+                action=discord.AuditLogAction.kick, limit=1, after=member.joined_at
+            ):
                 if entry.target.id == member.id:
                     embed.add_field(
                         name="Kicked by",
