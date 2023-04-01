@@ -220,7 +220,7 @@ class Logger(Cog):
         )
         embed.add_field(
             name="User",
-            value="{before.mention}",
+            value=before.mention,
             inline=False,
         )
 
