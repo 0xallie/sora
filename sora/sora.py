@@ -6,7 +6,7 @@ from discord.ext import commands
 from platformdirs import PlatformDirs
 from ruamel.yaml import YAML
 
-from .cogs import AppleWiki, ChatGPT, Embed, IPInfo, Logger, Moderation, Ping, Rules, Say, Sync
+from .cogs import AppleWiki, ChatGPT, Embed, IPInfo, Logger, Moderation, Ping, Rules, Say, Sync, Twitter
 
 
 def main() -> None:
@@ -33,5 +33,6 @@ def main() -> None:
     asyncio.run(bot.add_cog(Rules(bot, config)))
     asyncio.run(bot.add_cog(Say(bot, config)))
     asyncio.run(bot.add_cog(Sync(bot, config)))
+    asyncio.run(bot.add_cog(Twitter(bot, config)))
 
     bot.run(config["token"], log_level=logging.DEBUG)

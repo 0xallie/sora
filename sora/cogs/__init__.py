@@ -8,3 +8,4 @@ from .ping import Ping
 from .rules import Rules
 from .say import Say
 from .sync import Sync
+from .twitter import Twitter
