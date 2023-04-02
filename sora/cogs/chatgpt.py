@@ -13,7 +13,9 @@ from discord.ext import commands
 from ..utils import Cog
 
 
-class ChatGPT(Cog, commands.GroupCog, group_name="chatgpt", description="ChatGPT-related commands"):
+class ChatGPT(Cog, commands.GroupCog, group_name="chatgpt"):
+    """ChatGPT-related commands"""
+
     def __init__(self, *args: Any, **kwargs: Any):
         super().__init__(*args, **kwargs)
 
