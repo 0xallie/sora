@@ -5,6 +5,7 @@ from .ipinfo import IPInfo
 from .logger import Logger
 from .moderation import Moderation
 from .ping import Ping
+from .pronoundb import PronounDB
 from .rules import Rules
 from .say import Say
 from .sync import Sync
