@@ -108,6 +108,9 @@ class Logger(Cog):
                 inline=True,
             )
 
+        if len(embed.fields) <= 1:
+            return
+
         if added_roles or removed_roles:
             async for entry in before.guild.audit_logs(action=discord.AuditLogAction.member_role_update, limit=1):
                 if entry.target.id == before.id:
@@ -127,8 +130,7 @@ class Logger(Cog):
                     )
                 break
 
-        if len(embed.fields) > 1:
-            await log_channel.send(embed=embed)
+        await log_channel.send(embed=embed)
 
     @commands.Cog.listener()
     async def on_message_delete(self, message: discord.Message) -> None:
