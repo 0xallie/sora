@@ -54,7 +54,18 @@ class Twitter(Cog, commands.GroupCog, group_name="twitter"):
             ) as r:
                 res = await r.json()
 
-        data = res["data"]["user"]["result"]
+        try:
+            data = res["data"]["user"]["result"]
+        except KeyError:
+            await interaction.response.send_message(
+                embed=discord.Embed(
+                    color=discord.Color.red(),
+                    title="Error",
+                    description=f"User `{discord.utils.escape_markdown(username)}` not found.",
+                ),
+                ephemeral=True,
+            )
+
 
         try:
             description = data["verification_info"]["reason"]["description"]["text"].removesuffix(" Learn more")
