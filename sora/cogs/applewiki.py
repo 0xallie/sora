@@ -21,7 +21,9 @@ class AppleWiki(Cog):
                     if r.ok:
                         applewiki_urls.append(aw_url)
 
-            for article in re.findall(r"https?://(?:www\.)?iphonedev\.wiki/index\.php/(\S+)", message.content):
+            for article in re.findall(
+                r"https?://(?:www\.)?iphonedev(?:\.wiki|wiki\.net)/index\.php/(\S+)", message.content
+            ):
                 aw_url = f"https://theapplewiki.com/wiki/Dev:{article}"
                 async with session.head(aw_url) as r:
                     if r.ok:
