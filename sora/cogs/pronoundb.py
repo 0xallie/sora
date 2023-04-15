@@ -76,6 +76,7 @@ class PronounDB(Cog):
         embed.set_author(
             name=f"{user.name}#{user.discriminator}",
             icon_url=user.avatar.url if user.avatar else None,
+            url=f"https://discord.com/users/{user.id}",
         )
         embed.set_footer(text="Data provided by PronounDB")
 
