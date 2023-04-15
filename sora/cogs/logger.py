@@ -46,9 +46,10 @@ class Logger(Cog):
         got_audit_log_entry = False
         async for entry in member.guild.audit_logs(action=discord.AuditLogAction.ban, limit=1, after=member.joined_at):
             if entry.target.id == member.id:
+                mod = entry.user
                 embed.add_field(
                     name="Banned by",
-                    value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",  # noqa: E501
+                    value=f"{discord.utils.escape_markdown(mod.name)}#{mod.discriminator} ({mod.mention})",
                     inline=False,
                 )
                 got_audit_log_entry = True
@@ -58,9 +59,10 @@ class Logger(Cog):
                 action=discord.AuditLogAction.kick, limit=1, after=member.joined_at
             ):
                 if entry.target.id == member.id:
+                    mod = entry.user
                     embed.add_field(
                         name="Kicked by",
-                        value=f"{discord.utils.escape_markdown(entry.user.name)}#{entry.user.discriminator} ({entry.user.mention})",  # noqa: E501
+                        value=f"{discord.utils.escape_markdown(mod.name)}#{mod.discriminator} ({mod.mention})",
                         inline=False,
                     )
                     got_audit_log_entry = True
