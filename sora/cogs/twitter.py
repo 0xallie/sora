@@ -1,6 +1,5 @@
 import json
 import os
-import sys
 
 import aiohttp
 import discord
@@ -65,7 +64,6 @@ class Twitter(Cog, commands.GroupCog, group_name="twitter"):
                 ),
                 ephemeral=True,
             )
-
 
         try:
             description = data["verification_info"]["reason"]["description"]["text"].removesuffix(" Learn more")
