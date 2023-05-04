@@ -82,15 +82,10 @@ class Twitter(Cog, commands.GroupCog, group_name="twitter"):
             description=description,
         )
         embed.set_author(
-            name=data["legacy"]["name"],
+            name=f"{data['legacy']['name']} (@{data['legacy']['screen_name']})",
             url=f"https://twitter.com/{data['legacy']['screen_name']}",
             icon_url=data["legacy"]["profile_image_url_https"],
         )
-        embed.add_field(
-            name="Username",
-            value=discord.utils.escape_markdown(f"@{data['legacy']['screen_name']}"),
-            inline=False,
-        ),
         embed.add_field(
             name="Verified",
             value=f":white_check_mark: {verified_type or 'Personal'}" if verified else ":x: No",
