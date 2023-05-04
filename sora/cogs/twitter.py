@@ -1,5 +1,6 @@
 import json
 import os
+import re
 
 import aiohttp
 import discord
@@ -22,7 +23,7 @@ class Twitter(Cog, commands.GroupCog, group_name="twitter"):
         async with aiohttp.ClientSession() as session:
             # Get guest token
             async with session.get("https://twitter.com/home") as r:
-                guest_token = next(x.value for x in r.cookies.values() if x.key == "gt")
+                guest_token = re.findall(r"gt=(\d+)", await r.text())[0]
 
             csrf_token = os.urandom(16).hex()
 
