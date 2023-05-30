@@ -7,27 +7,14 @@ from ..utils import Cog
 
 class PronounDB(Cog):
     PRONOUN_MAP = {
-        "unspecified": "Unspecified",
-        "hh": "he/him",
-        "hi": "he/it",
-        "hs": "he/she",
-        "ht": "he/they",
-        "ih": "it/he",
-        "ii": "it/its",
-        "is": "it/she",
-        "it": "it/they",
-        "shh": "she/he",
-        "sh": "she/her",
-        "si": "she/it",
-        "st": "she/they",
-        "th": "they/he",
-        "ti": "they/it",
-        "ts": "they/she",
-        "tt": "they/them",
+        "he": "he/him",
+        "it": "it/its",
+        "she": "she/her",
+        "they": "they/them",
         "any": "Any pronouns",
-        "other": "Other pronouns",
         "ask": "Ask me my pronouns",
         "avoid": "Avoid pronouns, use my name",
+        "other": "Other pronouns",
     }
 
     @app_commands.command()
@@ -38,15 +25,17 @@ class PronounDB(Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                url="https://pronoundb.org/api/v1/lookup",
+                url="https://pronoundb.org/api/v2/lookup",
                 params={
                     "platform": "discord",
-                    "id": user.id,
+                    "ids": user.id,
                 },
             ) as r:
                 res = await r.json()
 
-        if res["pronouns"] == "unspecified":
+        pronouns = res.get(str(user.id), {}).get("sets", {}).get("en", [])
+
+        if not pronouns:
             await interaction.response.send_message(
                 embed=discord.Embed(
                     color=discord.Color.red(),
@@ -56,22 +45,10 @@ class PronounDB(Cog):
             )
             return
 
-        try:
-            pronouns = self.PRONOUN_MAP[res["pronouns"]]
-        except KeyError:
-            await interaction.response.send_message(
-                embed=discord.Embed(
-                    color=discord.Color.red(),
-                    description="An unexpected response was returned by PronounDB.",
-                ),
-                ephemeral=True,
-            )
-            return
-
         embed = discord.Embed(color=discord.Color.fuchsia())
         embed.add_field(
             name="Pronouns",
-            value=pronouns,
+            value=", ".join(self.PRONOUN_MAP[x] for x in pronouns),
         )
         embed.set_author(
             name=str(user),
