@@ -9,7 +9,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.9"
 chatgpt = {git = "https://github.com/0xallie/chatgpt.git"}
-discord-py = "^2.2.2"
+discord-py = "^2.3"
 platformdirs = "^3.1.1"
 ruamel-yaml = "^0.17.21"
 
